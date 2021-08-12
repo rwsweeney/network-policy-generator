@@ -1,7 +1,7 @@
 package main
 
 import (
-	"network-policy-generator/cmd"
+	"github.com/rwsweeney/network-policy-generator/cmd"
 )
 
 var (
@@ -12,5 +12,5 @@ var (
 )
 
 func main() {
-	cmd.Execute()
+	cmd.Execute(version, commit)
 }
