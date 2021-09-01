@@ -33,7 +33,7 @@ var generate = &cobra.Command{
 			panic(err)
 		}
 
-		// and this line executes the tmp template with the values stored in sweater and prints it to Stdout
+		// and this line executes the tmp template with the values stored in netpol_values and prints it to Stdout
 		err = tmpl.Execute(os.Stdout, netpol_values)
 		if err != nil {
 			panic(err)
