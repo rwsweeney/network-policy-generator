@@ -26,8 +26,8 @@ var generate = &cobra.Command{
 	Run: func(cmd *cobra.Command, args []string) {
 		netpol_values := Inventory{"Rachel's Cool network policy", "kube-system-lol", 80}
 
-		// I think this line defines the template file at file.txt
-		tmpl, err := template.ParseFiles("file.txt")
+		// I think this line defines the template file at netpol-template.yaml
+		tmpl, err := template.ParseFiles("netpol-template.yaml")
 
 		if err != nil {
 			panic(err)
