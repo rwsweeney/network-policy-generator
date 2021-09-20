@@ -6,29 +6,29 @@ metadata:
 spec:
   podSelector:
     matchLabels:
-      role: 
+      role: {{ .SpecMatchLabelRole }}
   policyTypes:
   - Ingress
   - Egress
   ingress:
   - from:
     - ipBlock:
-        cidr: 
-        except:
-        - 
+        cidr: {{ .IngressCidr }}
+        except: 
+        - {{ .IngressIpBlockExcept }}
     - namespaceSelector:
         matchLabels:
-          project: 
+          project: {{ .IngressNamespaceMatchLabel }}
     - podSelector:
         matchLabels:
-          role: 
+          role: {{ .IngressPodSelectorMatchLabel }}
     ports:
     - protocol: TCP
-      port: {{ .Port }}
+      port: {{ .IngressPort }}
   egress:
   - to:
     - ipBlock:
-        cidr: 
+        cidr: {{ .EgressCidr }}
     ports:
     - protocol: TCP
-      port: 
+      port: {{ .EgressPort }}

@@ -13,9 +13,19 @@ func init() {
 }
 
 type Inventory struct {
-	Name      string
-	Namespace string
-	Port      uint
+	Name      						string
+	Namespace 						string
+	SpecMatchLabelRole				string
+	IngressCidr						string 
+	IngressIpBlockExcept			string
+	// Should the below be called Project?
+	IngressNamespaceMatchLabel		string
+	// Should the below be called Role?
+	IngressPodSelectorMatchLabel	string
+	IngressPort    					string
+	EgressCidr						string
+	EgressPort						string
+
 }
 
 var generate = &cobra.Command{
@@ -24,7 +34,7 @@ var generate = &cobra.Command{
 	Long:  `Generates a network policy`,
 
 	Run: func(cmd *cobra.Command, args []string) {
-		netpol_values := Inventory{"Rachel's Cool network policy", "kube-system-lol", 80}
+		netpol_values := Inventory{"Rachel's Cool network policy", "kube-system-lol", "web", "192.168.0.1/24", "192.168.1.1/32", "myProject", "frontend", "80", "172.168.0.1/24", "8080"}
 
 		// I think this line defines the template file at netpol-template.yaml
 		tmpl, err := template.ParseFiles("netpol-template.yaml")
